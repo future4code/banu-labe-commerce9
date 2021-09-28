@@ -15,7 +15,7 @@ const ProdutosContainer = styled.div`
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px
+    gap: 10px;
 ` 
 const Produto = styled.div`
     box-shadow: 1px 1px darkgray;
