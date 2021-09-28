@@ -1,11 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Naves } from './Componentes/Naves/Naves.js';
+
+
+import ViagensEspaciais from './Componentes/PaginaViagens/viagensEspaciais';
 
 function App() {
   return (
     <div className="App">
+
+
 
     </div>
   );
