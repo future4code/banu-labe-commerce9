@@ -13,7 +13,7 @@ import sistemasolar from "./images/sistemasolar.jpg"
 
 const ProdutosContainer = styled.div`
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
 ` 
@@ -95,7 +95,7 @@ class ViagensEspaciais extends React.Component {
             },
             {
                 id: 9,
-                name: "Combo Completo! Viagem de Mercúrio até Netuno.",
+                name: "Viagem de Mercúrio até Netuno.",
                 value: 250000.00,
                 image: sistemasolar
             }
@@ -114,7 +114,7 @@ class ViagensEspaciais extends React.Component {
                             <ImagemProduto src={iten.image} alt= "Planeta"/>
                             <NomeProduto>{iten.name}</NomeProduto>
                             <ValorProduto>R$ {iten.value}</ValorProduto>
-                            <BotaoAdicionar>Adicionar ao Carrinho</BotaoAdicionar>
+                            <BotaoAdicionar value={iten.id}>Adicionar ao Carrinho</BotaoAdicionar>
                         </Produto>
                     )
                 })}

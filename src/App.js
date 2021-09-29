@@ -109,6 +109,10 @@ const Filtros = styled.div`
 
 class App extends React.Component {
   state = {
+    pageViagens: true,
+    pageNaves: false,
+    pageRoupas: false, 
+    // pageSelecionada: '',
   }
 
   header = () => {
@@ -144,9 +148,9 @@ class App extends React.Component {
     return(
       <Menu>
         <Opcoes>
-          <a href=''>Viagens</a>
-          <a href=''>Naves</a>
-          <a href=''>Roupas</a>
+          <a value='viagens' onClick={this.onClickViagens}>Viagens</a>
+          <a value='naves' onClick={this.onClickNaves}>Naves</a>
+          <a value='roupas' onClick={this.onClickRoupas}>Roupas</a>
         </Opcoes>
         <select>
           <option value='crescente'>Crescente</option>
@@ -164,6 +168,51 @@ class App extends React.Component {
     )
   }
 
+  paginaRenderizada = () => {
+    if (this.state.pageViagens) {
+      return <ViagensEspaciais/>
+    }
+    if (this.state.pageRoupas) {
+      return <Roupas /> 
+    }
+    if (this.state.pageNaves) {
+      return <Naves />
+    }
+  }
+
+  onClickViagens = () => {
+    this.setState(
+      {
+        pageViagens: true,
+        pageNaves: false,
+        pageRoupas: false
+      }
+    )
+  }
+
+  
+
+   onClickNaves = () => {
+    this.setState(
+      {
+        pageViagens: false,
+        pageNaves: true,
+        pageRoupas: false
+      }
+    )
+  }
+  
+  onClickRoupas = () => {
+    this.setState(
+      {
+        pageViagens: false,
+        pageNaves: false,
+        pageRoupas: true
+      }
+    )
+
+  }
+
   render(){
       return (
         <Container>
@@ -179,9 +228,9 @@ class App extends React.Component {
             <Opcoes>
               {this.menuOpcoes()}
             </Opcoes>
-            <ViagensEspaciais />
-            <Naves />
-            <Roupas />            
+            {this.paginaRenderizada()}
+            
+                       
           </Main>
 
           <Footer>
@@ -193,5 +242,6 @@ class App extends React.Component {
     );
   }
 }
+
 
 export default App;
