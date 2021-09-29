@@ -34,7 +34,13 @@ const ValorProduto = styled.p`
     text-align: center;
 `
 
-
+const BotaoAdicionar = styled.button` 
+    background-color: white;
+    color: black;
+    border: none;
+    border: 1px solid black;
+    
+`
 
 class ViagensEspaciais extends React.Component {
     state = {
@@ -108,7 +114,7 @@ class ViagensEspaciais extends React.Component {
                             <ImagemProduto src={iten.image} alt= "Planeta"/>
                             <NomeProduto>{iten.name}</NomeProduto>
                             <ValorProduto>R$ {iten.value}</ValorProduto>
-                            <button>Adicionar ao Carrinho</button>
+                            <BotaoAdicionar>Adicionar ao Carrinho</BotaoAdicionar>
                         </Produto>
                     )
                 })}

@@ -1,20 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
-
-
+import Naves from './Componentes/Naves/Naves';
 import ViagensEspaciais from './Componentes/PaginaViagens/viagensEspaciais';
+import Roupas from './Componentes/Roupas/roupas';
+import ImgBackground from './imagens/galaxia.jpeg';
+
 
 
 const Header = styled.header `
   grid-column: 1/3;
   grid-row: 1/2;
-  background: #696969; 
+ /*   background: #696969;  */
+
   color: white;
  
   header{
     display: flex;
     justify-content: space-between;
-    margin: 0 20px;
+    margin: 0;
+    padding: 0 20px;
+   
   
     >button {
       height:30px;
@@ -108,7 +113,7 @@ class App extends React.Component {
 
   header = () => {
     return(
-      <header>
+      <header style={{backgroundImage: `url(${ImgBackground})`}}>
         <h2>🚀Galáxia 42</h2>
         <button>Carrinho</button>
       </header>
@@ -174,7 +179,9 @@ class App extends React.Component {
             <Opcoes>
               {this.menuOpcoes()}
             </Opcoes>
-            <ViagensEspaciais/>
+            <ViagensEspaciais />
+            <Naves />
+            <Roupas />            
           </Main>
 
           <Footer>

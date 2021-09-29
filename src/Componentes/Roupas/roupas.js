@@ -1,32 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ProductContainer = styled.div`
+const ProdutosContainer = styled.div`
     display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px 20px;
+    gap: 10px;
 `
 
-const ProductCard = styled.div`
-    display: flex;
-    flex-direction: column;
-    background: lightblue;
-    height:340px;
-    align-items: center;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 5px;
-    button{
-        width:40%;
-        margin-bottom:20px;
-    }
+const Produto = styled.div`
+    box-shadow: 1px 1px darkgray;
+    text-align: center;
     
 `
+const ImagemProduto = styled.img`
+    width: 100%;
+    height: 70%;
+`
+const NomeProduto = styled.h3`
+    text-align: center;
+`
 
-const ImageCard = styled.img`
-    width:200px;
-    height: 200px;
-    margin: 5px auto 0 auto;
+const ValorProduto = styled.p`
+    text-align: center;
+`
+const BotaoAdicionar = styled.button` 
+    background-color: white;
+    color: black;
+    border: none;
+    border: 1px solid black;
+    
 `
 
 class Roupas  extends React.Component {
@@ -60,15 +63,15 @@ class Roupas  extends React.Component {
     }
     render() {
         return (
-            <ProductContainer>
+            <ProdutosContainer>
                 {this.state.produtos.map((produto)=> 
-                    <ProductCard>
-                        <ImageCard src={produto.imagem}/>
-                        <p>{produto.nome}</p>
-                        <p>{produto.preco}</p>
-                        <button>Adicionar ao carrinho</button>
-                    </ProductCard>)} 
-            </ProductContainer>
+                    <Produto>
+                        <ImagemProduto src={produto.imagem}/>
+                        <NomeProduto>{produto.nome}</NomeProduto>
+                        <ValorProduto>{produto.preco}</ValorProduto>
+                        <BotaoAdicionar>Adicionar ao carrinho</BotaoAdicionar>
+                    </Produto>)} 
+            </ProdutosContainer>
         )
     }
 }
