@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const ProdutosContainer = styled.div`
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
 `
@@ -36,25 +36,25 @@ class Roupas  extends React.Component {
     state = {
         produtos: [
             {
-                id:1,
+                id:20,
                 nome: `Roupa Espacial Normal`,
                 preco: 1500,
                 imagem: `https://ichef.bbci.co.uk/news/224/amz/worldservice/live/assets/images/2014/05/02/140502075522_nasa_z1_spacesuit_224x280_nasa.jpg`
             },
             {
-                id:2,
+                id:21,
                 nome: `Roupa Espacial Versão Premium`,
                 preco: 1800,
                 imagem: `https://w7.pngwing.com/pngs/424/49/png-transparent-astronaut-space-suit-outer-space-space-exploration-astronaut-chemical-space-mitsubishi.png`
             },
             {
-                id:3,
+                id:22,
                 nome: `Roupa Espacial Laranja`,
                 preco: 1600,
                 imagem: `https://i.pinimg.com/originals/d9/45/21/d94521ee32233b8ad3a3befe7d85242a.jpg`
             },
             {
-                id:4,
+                id:23,
                 nome: `Roupa Espacial Com detalhes Laranjas`,
                 preco: 2500,
                 imagem: `https://media.istockphoto.com/photos/astronaut-in-a-space-suit-picture-id155378758`
@@ -69,7 +69,7 @@ class Roupas  extends React.Component {
                         <ImagemProduto src={produto.imagem}/>
                         <NomeProduto>{produto.nome}</NomeProduto>
                         <ValorProduto>{produto.preco}</ValorProduto>
-                        <BotaoAdicionar>Adicionar ao carrinho</BotaoAdicionar>
+                        <BotaoAdicionar value={produto.id}>Adicionar ao carrinho</BotaoAdicionar>
                     </Produto>)} 
             </ProdutosContainer>
         )

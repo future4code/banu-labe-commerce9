@@ -49,70 +49,70 @@ class Naves extends React.Component{
             nome: 'Soyuz MS-09',
             imagem: soyuz09,
             preco: 10,
-            id: 1,
+            id: 10,
            
         },
         {
             nome: 'Shenzhou',
             imagem: shenzhou,
             preco: 10,
-            id: 2,
+            id: 11,
 
         },
         {
             nome: 'New Shepard',
             imagem: newshepard,
             preco: 10,
-            id: 3,
+            id: 12,
 
         },
         {
             nome: 'SpaceShipTwo',
             imagem: spaceshiptwo,
             preco: 10,
-            id: 4,
+            id: 13,
 
         },
         {
             nome: 'Orion',
             imagem: orion,
             preco: 10,
-            id: 5,
+            id: 14,
 
         },
         {
             nome: 'Dragon V2',
             imagem: dragonv2,
             preco: 10,
-            id: 6,
+            id: 15,
 
         },
         {
             nome: 'Dream Chaser',
             imagem: dreamchaser,
             preco: 10,
-            id: 7,
+            id: 16,
 
         },
         {
             nome: 'Lynx',
             imagem: lynx,
             preco: 10,
-            id: 8,
+            id: 17,
 
         },
         {
             nome: 'Starship',
             imagem: starship,
             preco: 10,
-            id: 9,
+            id: 18,
 
         },
         {
             nome: 'Space Launch System',
             imagem: sls,
             preco: 10,
-            id: 10,
+            id: 19,
 
         },
         ],
