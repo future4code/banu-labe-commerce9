@@ -11,27 +11,29 @@ import lynx from './imagens/lynx.jpg';
 import starship from './imagens/starship.jpg';
 import sls from './imagens/sls.jpg';
 
-const Cabecalho = styled.header` 
-    max-height: 30vh;
-    max-width: 100vw;
-    width: 100vw;
-    height: 10vh;
-    background-color: black;
-    color: white;
+const ProdutosContainer = styled.div` 
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+
+`
+const Produto = styled.div` 
+    box-shadow: 1px 1px darkgray;
     text-align: center;
 `
-const ConteudoPagina = styled.div` 
-    display: flex;
-    max-width: 100vw;
-    width: 100vw;
-
-`
-const Carrinho = styled.div`
-    max-width: 20%;
-    width: 15vw;
-    background-color: lightblue;
+const ImagemProduto = styled.img `  
+    width: 100%;
+    height: 70%;
 `
 
+const NomeProduto = styled.h3`
+    text-align: center;
+`
+
+const ValorProduto = styled.p`
+    text-align: center;
+`
 const BotaoAdicionar = styled.button` 
     background-color: white;
     color: black;
@@ -40,34 +42,7 @@ const BotaoAdicionar = styled.button`
     
 `
 
-const MenuLateral = styled.nav` 
-    max-width: 20%;
-    width: 15vw;
-    background-color: lightblue;
-`
-
-const NavesEspaciais = styled.div` 
-    display: grid;
-    grid-template-rows: repeat(5, 1fr);
-    grid-template-columns: repeat(3, 1fr);
-    height: 50%;
-    width: 70vw;
-`
-const ListagemNaves = styled.div` 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 1%;
-    border: 1px solid black;
-`
-
-const ImagensNaves = styled.img `  
-    width: 60%;
-    height: 60%;
-`
-
-export class Naves extends React.Component{
+class Naves extends React.Component{
     state = {
         naves: [
         {
@@ -148,12 +123,12 @@ export class Naves extends React.Component{
     listaNaves () { //lista naves na página
         const lista = this.state.naves.map((nave) =>{
             return (
-            <ListagemNaves key={nave.id}>
-                <ImagensNaves src={nave.imagem} />
-                <p>{nave.nome}</p>
-                <p>R${nave.preco},00</p>
+            <Produto key={nave.id}>
+                <ImagemProduto src={nave.imagem} />
+                <NomeProduto>{nave.nome}</NomeProduto>
+                <ValorProduto>R${nave.preco},00</ValorProduto>
                 <BotaoAdicionar value={nave.id} onClick={this.adicionarCarrinho}>Adicionar ao carrinho</BotaoAdicionar>
-            </ListagemNaves> )}
+            </Produto> )}
         )
 
         return lista
@@ -165,17 +140,11 @@ export class Naves extends React.Component{
 
     render(){
         return(
-            <div>
-                <ConteudoPagina>
-    
-                    <NavesEspaciais>
-                        {this.listaNaves()}
-                    </NavesEspaciais>
-
-               </ConteudoPagina>
-
-
-            </div>
+            <ProdutosContainer>   
+                {this.listaNaves()}
+            </ProdutosContainer>
         )
     }
 }
+
+export default Naves
