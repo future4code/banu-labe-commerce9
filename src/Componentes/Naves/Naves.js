@@ -153,6 +153,15 @@ class Naves extends React.Component{
                 .filter ((iten) => {
                     return this.props.valorMaximo === "" || iten.preco <= this.props.valorMaximo
                 })
+                .sort((primeiroIten, segundoIten)=> {
+                    switch (this.props.parametroDeOrdenacao){
+                        case 'titulo':
+                            return this.props.tipoDeOrdenacao * primeiroIten.nome.localeCompare(segundoIten.nome)    
+                        default:
+                            return this.props.tipoDeOrdenacao * (primeiroIten.preco - segundoIten.preco)    
+                        
+                    }
+                })
                 .map((nave) =>{
                     return (
                         <Produto key={nave.id}>
