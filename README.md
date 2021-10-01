@@ -32,3 +32,15 @@ Criar um site de e-Commerce usando os recursos React... No projeto deve conter a
 
 
 
+![3](https://user-images.githubusercontent.com/86810734/135695708-b541dcc4-2d9e-4587-a6ed-6a6087f57329.png)
+
+
+
+![4](https://user-images.githubusercontent.com/86810734/135695774-47c43c97-09d5-4316-a308-b6f518faac80.png)
+
+
+![5](https://user-images.githubusercontent.com/86810734/135695844-6b04920a-416b-41a7-be05-c4234a3ab476.png)
+
+
+
+
