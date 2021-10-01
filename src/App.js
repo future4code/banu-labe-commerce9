@@ -110,9 +110,7 @@ const Filtros = styled.div`
 
 class App extends React.Component {
   state = {
-    pageViagens: true,
-    pageNaves: false,
-    pageRoupas: false, 
+    pageRender: 'viagens', 
     carrinho: [],
     valorMaximo: '',
     valorMinimo:'',
@@ -159,7 +157,7 @@ class App extends React.Component {
     return(
       <Menu>
         <Opcoes>
-          <a value='viagens' onClick={this.onClickViagens}>Viagens</a>
+          <a value='viagens'  onClick={this.onClickViagens}>Viagens</a>
           <a value='naves' onClick={this.onClickNaves}>Naves</a>
           <a value='roupas' onClick={this.onClickRoupas}>Roupas</a>
         </Opcoes>
@@ -180,35 +178,29 @@ class App extends React.Component {
   }
 
   paginaRenderizada = () => {
-    if (this.state.pageViagens) {
-      return <ViagensEspaciais nomeFiltro= {this.state.nomeFiltro}/>
-    }
-    if (this.state.pageRoupas) {
-      return <Roupas nomeFiltro= {this.state.nomeFiltro}/> 
-    }
-    if (this.state.pageNaves) {
-      return <Naves nomeFiltro= {this.state.nomeFiltro}/>
+    switch (this.state.pageRender){
+      case 'naves' :
+        return <Naves nomeFiltro= {this.state.nomeFiltro}/>
+      case 'roupas':
+        return <Roupas nomeFiltro= {this.state.nomeFiltro}/>
+      default:
+        return <ViagensEspaciais nomeFiltro= {this.state.nomeFiltro}/>
     }
   }
-
+  
   onClickViagens = () => {
     this.setState(
       {
-        pageViagens: true,
-        pageNaves: false,
-        pageRoupas: false
+        pageRender: 'viagens'
       }
     )
   }
-
-  
+ 
 
    onClickNaves = () => {
     this.setState(
       {
-        pageViagens: false,
-        pageNaves: true,
-        pageRoupas: false
+        pageRender: 'naves'
       }
     )
   }
@@ -216,9 +208,7 @@ class App extends React.Component {
   onClickRoupas = () => {
     this.setState(
       {
-        pageViagens: false,
-        pageNaves: false,
-        pageRoupas: true
+        pageRender: 'roupas'
       }
     )
 
