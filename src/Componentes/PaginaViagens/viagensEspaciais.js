@@ -99,22 +99,41 @@ class ViagensEspaciais extends React.Component {
                 value: 250000.00,
                 image: sistemasolar
             }
+        ],
 
-
-
-        ]
+        carrinhoViagens: [],
     }
+
+/*     adicionarCarrinho (id){
+        const produtosEscolhidos = this.state.viagens.filter((viagem) =>{
+            if (id === viagem.id){
+                return viagem
+            }
+        })
+
+        this.setState({carrinhoViagens: [
+            ...this.state.carrinhoViagens,
+            produtosEscolhidos
+        ]})
+        
+        localStorage.setItem("carrinhoViagens", JSON.stringify(this.state.carrinhoViagens))
+    } */
+
     render() {
         return(
             <ProdutosContainer>
                               
-                {this.state.viagens.map((iten, indice) => {
+                {this.state.viagens.filter((iten)=>{
+                    if(iten.name.toLowerCase().includes(this.props.nomeFiltro.toLowerCase())) return true
+                    return false
+                })
+                .map((iten, indice) => {
                     return (
                         <Produto key= {indice}>
                             <ImagemProduto src={iten.image} alt= "Planeta"/>
                             <NomeProduto>{iten.name}</NomeProduto>
                             <ValorProduto>R$ {iten.value}</ValorProduto>
-                            <BotaoAdicionar value={iten.id}>Adicionar ao Carrinho</BotaoAdicionar>
+                            <BotaoAdicionar onClick={() => this.adicionarCarrinho(iten.id)}>Adicionar ao Carrinho</BotaoAdicionar>
                         </Produto>
                     )
                 })}

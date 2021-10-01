@@ -4,6 +4,7 @@ import Naves from './Componentes/Naves/Naves';
 import ViagensEspaciais from './Componentes/PaginaViagens/viagensEspaciais';
 import Roupas from './Componentes/Roupas/roupas';
 import ImgBackground from './imagens/galaxia.jpeg';
+import Carrinho from './Componentes/Carrinho/Carrinho';
 
 
 
@@ -112,14 +113,17 @@ class App extends React.Component {
     pageViagens: true,
     pageNaves: false,
     pageRoupas: false, 
-    // pageSelecionada: '',
+    carrinho: [],
+    valorMaximo: '',
+    valorMinimo:'',
+    nomeFiltro: '',
   }
 
   header = () => {
     return(
       <header style={{backgroundImage: `url(${ImgBackground})`}}>
         <h2>🚀Galáxia 42</h2>
-        <button>Carrinho</button>
+        <button onClick={this.onClickAdicionarCarrinho()}>Carrinho</button>
       </header>
     )
   }
@@ -137,11 +141,18 @@ class App extends React.Component {
         </div>
         <div className="ElementoFiltro">
             <label>Nome</label>
-            <input type="text"></input>
+            <input 
+              value= {this.state.nomeFiltro} 
+              onChange={this.onChangeNomeFiltro} 
+              type="text"></input>
         </div>
         <button> Buscar </button>
       </Filtros>
     )
+  }
+
+  onChangeNomeFiltro = (e) => {
+    this.setState({nomeFiltro: e.target.value})
   }
 
   menuOpcoes = () => {
@@ -170,13 +181,13 @@ class App extends React.Component {
 
   paginaRenderizada = () => {
     if (this.state.pageViagens) {
-      return <ViagensEspaciais/>
+      return <ViagensEspaciais nomeFiltro= {this.state.nomeFiltro}/>
     }
     if (this.state.pageRoupas) {
-      return <Roupas /> 
+      return <Roupas nomeFiltro= {this.state.nomeFiltro}/> 
     }
     if (this.state.pageNaves) {
-      return <Naves />
+      return <Naves nomeFiltro= {this.state.nomeFiltro}/>
     }
   }
 
@@ -213,7 +224,13 @@ class App extends React.Component {
 
   }
 
+  onClickAdicionarCarrinho = () => {
+    const produtosNaves = localStorage.getItem("carrinhoNaves")
+    
+  }
+
   render(){
+    
       return (
         <Container>
           <Header>
