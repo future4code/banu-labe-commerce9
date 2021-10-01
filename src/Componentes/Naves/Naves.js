@@ -117,33 +117,37 @@ class Naves extends React.Component{
         },
         ],
 
-        carrinho: [],
+        carrinhoNaves: [],
 
     }
 
 
-    adicionarCarrinho (id){
+/*     adicionarCarrinho (id){
         const produtosEscolhidos = this.state.naves.filter((nave) =>{
             if (id === nave.id){
                 return nave
             }
         })
 
-        this.setState({carrinho: [
-            ...this.state.carrinho,
+        this.setState({carrinhoNaves: [
+            ...this.state.carrinhoNaves,
             produtosEscolhidos
         ]})
         
-        localStorage.setItem("carrinho", JSON.stringify(this.state.carrinho))
+        localStorage.setItem("carrinhoNaves", JSON.stringify(this.state.carrinho))
     }
-    
+     */
 
     render(){
         
         return(
             <ProdutosContainer>   
 
-                {this.state.naves.map((nave) =>{
+                {this.state.naves.filter((nave)=>{
+                    if(nave.nome.toLowerCase().includes(this.props.nomeFiltro.toLowerCase())) return true
+                    return false
+                })
+                .map((nave) =>{
                     return (
                         <Produto key={nave.id}>
                             <ImagemProduto src={nave.imagem} />

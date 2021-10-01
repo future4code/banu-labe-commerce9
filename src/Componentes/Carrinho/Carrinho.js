@@ -8,9 +8,7 @@ class Carrinho extends React.Component{
         carrinho: []
     }
     
-    onClickAdicionarCarrinho = () => {
-        
-    }
+
     
     
     render(){

@@ -59,17 +59,39 @@ class Roupas  extends React.Component {
                 preco: 2500,
                 imagem: `https://media.istockphoto.com/photos/astronaut-in-a-space-suit-picture-id155378758`
             }
-        ]
+        ],
+
+        carrinhoRoupas: [],
     }
+
+     adicionarCarrinho (id){
+        const produtosEscolhidos = this.state.produtos.filter((produto) =>{
+            if (id === produto.id){
+                return produto
+            }
+        })
+
+        this.setState({carrinhoRoupas: [
+            ...this.state.carrinhoRoupas,
+            produtosEscolhidos
+        ]})
+        
+        localStorage.setItem("carrinhoRoupas", JSON.stringify(this.state.carrinhoRoupas))
+    }  
+
     render() {
         return (
             <ProdutosContainer>
-                {this.state.produtos.map((produto)=> 
+                {this.state.produtos.filter((produto)=>{
+                    if(produto.nome.toLowerCase().includes(this.props.nomeFiltro.toLowerCase())) return true
+                    return false
+                })
+                .map((produto)=> 
                     <Produto>
                         <ImagemProduto src={produto.imagem}/>
                         <NomeProduto>{produto.nome}</NomeProduto>
                         <ValorProduto>{produto.preco}</ValorProduto>
-                        <BotaoAdicionar value={produto.id}>Adicionar ao carrinho</BotaoAdicionar>
+                        <BotaoAdicionar onClick={() => this.adicionarCarrinho(produto.id)}>Adicionar ao carrinho</BotaoAdicionar>
                     </Produto>)} 
             </ProdutosContainer>
         )
