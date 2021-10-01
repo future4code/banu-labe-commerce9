@@ -111,7 +111,7 @@ class Naves extends React.Component{
         {
             nome: 'Space Launch System',
             imagem: sls,
-            preco: 10,
+            preco: 8,
             id: 19,
 
         },
@@ -147,6 +147,12 @@ class Naves extends React.Component{
                     if(nave.nome.toLowerCase().includes(this.props.nomeFiltro.toLowerCase())) return true
                     return false
                 })
+                .filter((iten) => {
+                    return this.props.valorMinimo === "" || iten.preco >= this.props.valorMinimo
+                })
+                .filter ((iten) => {
+                    return this.props.valorMaximo === "" || iten.preco <= this.props.valorMaximo
+                })
                 .map((nave) =>{
                     return (
                         <Produto key={nave.id}>
@@ -157,7 +163,7 @@ class Naves extends React.Component{
                         </Produto> 
                     )
                 })}
-            )
+            
 
             </ProdutosContainer>
             

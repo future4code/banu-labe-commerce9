@@ -127,6 +127,12 @@ class ViagensEspaciais extends React.Component {
                     if(iten.name.toLowerCase().includes(this.props.nomeFiltro.toLowerCase())) return true
                     return false
                 })
+                .filter((iten)=> {
+                    return this.props.valorMinimo === "" || iten.value >= this.props.valorMinimo
+                })
+                .filter((iten) =>{
+                    return this.props.valorMaximo === "" || iten.value <= this.props.valorMaximo
+                })
                 .map((iten, indice) => {
                     return (
                         <Produto key= {indice}>

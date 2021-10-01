@@ -131,22 +131,39 @@ class App extends React.Component {
       <Filtros>
         <div className="ElementoFiltro">
             <label>Valor Minimo</label>
-            <input type="number"></input>
+            <input
+              placeholder= "Valor Mínimo" 
+              type="number"
+              value= {this.state.valorMinimo}
+              onChange={this.onChangeValorMinimo}/>
         </div>
         <div className="ElementoFiltro">
             <label>Valor Maximo</label>
-            <input type="number"></input>
+            <input 
+              placeholder= "Valor Máximo"
+              type="number"
+              value= {this.state.valorMaximo}
+              onChange= {this.onChangeValorMaximo}/>
         </div>
         <div className="ElementoFiltro">
             <label>Nome</label>
-            <input 
+            <input
+              placeholder= "Pesquisa" 
               value= {this.state.nomeFiltro} 
               onChange={this.onChangeNomeFiltro} 
-              type="text"></input>
+              type="text"/>
         </div>
         <button> Buscar </button>
       </Filtros>
     )
+  }
+
+  onChangeValorMaximo = (e) => {
+    this.setState({valorMaximo: e.target.value})
+  }
+
+  onChangeValorMinimo = (e) => {
+    this.setState({valorMinimo: e.target.value})
   }
 
   onChangeNomeFiltro = (e) => {
@@ -180,11 +197,20 @@ class App extends React.Component {
   paginaRenderizada = () => {
     switch (this.state.pageRender){
       case 'naves' :
-        return <Naves nomeFiltro= {this.state.nomeFiltro}/>
+        return <Naves 
+                  valorMaximo={this.state.valorMaximo} 
+                  valorMinimo={this.state.valorMinimo} 
+                  nomeFiltro= {this.state.nomeFiltro}/>
       case 'roupas':
-        return <Roupas nomeFiltro= {this.state.nomeFiltro}/>
+        return <Roupas 
+                  valorMaximo={this.state.valorMaximo} 
+                  valorMinimo={this.state.valorMinimo} 
+                  nomeFiltro= {this.state.nomeFiltro}/>
       default:
-        return <ViagensEspaciais nomeFiltro= {this.state.nomeFiltro}/>
+        return <ViagensEspaciais 
+                  valorMaximo={this.state.valorMaximo} 
+                  valorMinimo={this.state.valorMinimo} 
+                  nomeFiltro= {this.state.nomeFiltro}/>
     }
   }
   

@@ -86,6 +86,12 @@ class Roupas  extends React.Component {
                     if(produto.nome.toLowerCase().includes(this.props.nomeFiltro.toLowerCase())) return true
                     return false
                 })
+                .filter((iten) => {
+                    return this.props.valorMinimo === "" || iten.preco >= this.props.valorMinimo
+                })
+                .filter((iten)=>{
+                    return this.props.valorMaximo === "" || iten.preco <= this.props.valorMaximo
+                })
                 .map((produto)=> 
                     <Produto>
                         <ImagemProduto src={produto.imagem}/>
