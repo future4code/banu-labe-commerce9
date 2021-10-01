@@ -133,6 +133,15 @@ class ViagensEspaciais extends React.Component {
                 .filter((iten) =>{
                     return this.props.valorMaximo === "" || iten.value <= this.props.valorMaximo
                 })
+                .sort((primeiroIten, segundoIten)=> {
+                    switch (this.props.parametroDeOrdenacao){
+                        case 'titulo':
+                            return this.props.tipoDeOrdenacao * primeiroIten.name.localeCompare(segundoIten.name)    
+                        default:
+                            return this.props.tipoDeOrdenacao * (primeiroIten.value - segundoIten.value)    
+                        
+                    }
+                })
                 .map((iten, indice) => {
                     return (
                         <Produto key= {indice}>

@@ -6,7 +6,28 @@ import Roupas from './Componentes/Roupas/roupas';
 import ImgBackground from './imagens/galaxia.jpeg';
 import Carrinho from './Componentes/Carrinho/Carrinho';
 
+const TipoDeOrdenacao = styled.div`
+  display: flex;
+  justify-content: center;
 
+  select{
+    width: 100px;
+  }
+`
+
+const Ordenacao = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  select{
+    width: 100px;
+  }
+  label{
+    font-size: 20px;
+  }
+`
 
 const Header = styled.header `
   grid-column: 1/3;
@@ -115,6 +136,8 @@ class App extends React.Component {
     valorMaximo: '',
     valorMinimo:'',
     nomeFiltro: '',
+    parametroDeOrdenacao: "preco",
+    tipoDeOrdenacao: 1
   }
 
   header = () => {
@@ -170,6 +193,14 @@ class App extends React.Component {
     this.setState({nomeFiltro: e.target.value})
   }
 
+  atualizaParametroOrdenacao = (e) => {
+    this.setState({parametroDeOrdenacao: e.target.value})
+  }
+
+  atualizaTipoDeOrdenacao = (e) => {
+    this.setState({tipoDeOrdenacao: e.target.value})
+  }
+
   menuOpcoes = () => {
     return(
       <Menu>
@@ -178,10 +209,25 @@ class App extends React.Component {
           <a value='naves' onClick={this.onClickNaves}>Naves</a>
           <a value='roupas' onClick={this.onClickRoupas}>Roupas</a>
         </Opcoes>
-        <select>
-          <option value='crescente'>Crescente</option>
-          <option value='decrescente'>Decrescente</option>
-        </select>
+        <Ordenacao>
+          <label>Ordenação:</label>
+          <select
+            value= {this.state.parametroDeOrdenacao}
+            onChange={this.atualizaParametroOrdenacao}  
+          >
+            <option value='preco'>Preço</option>
+            <option value='titulo'>Título</option>
+          </select>
+        </Ordenacao>
+        <TipoDeOrdenacao>
+          <select
+            value={this.state.tipoDeOrdenacao}
+            onChange={this.atualizaTipoDeOrdenacao}
+          >
+            <option value={1}>Crescente</option>
+            <option value={-1}>Decrescente</option>
+          </select>
+        </TipoDeOrdenacao>
       </Menu>
     )
   }
@@ -200,17 +246,23 @@ class App extends React.Component {
         return <Naves 
                   valorMaximo={this.state.valorMaximo} 
                   valorMinimo={this.state.valorMinimo} 
-                  nomeFiltro= {this.state.nomeFiltro}/>
+                  nomeFiltro= {this.state.nomeFiltro}
+                  parametroDeOrdenacao= {this.state.parametroDeOrdenacao}
+                  tipoDeOrdenacao= {this.state.tipoDeOrdenacao}/>
       case 'roupas':
         return <Roupas 
                   valorMaximo={this.state.valorMaximo} 
                   valorMinimo={this.state.valorMinimo} 
-                  nomeFiltro= {this.state.nomeFiltro}/>
+                  nomeFiltro= {this.state.nomeFiltro}
+                  parametroDeOrdenacao= {this.state.parametroDeOrdenacao}
+                  tipoDeOrdenacao= {this.state.tipoDeOrdenacao}/>
       default:
         return <ViagensEspaciais 
                   valorMaximo={this.state.valorMaximo} 
                   valorMinimo={this.state.valorMinimo} 
-                  nomeFiltro= {this.state.nomeFiltro}/>
+                  nomeFiltro= {this.state.nomeFiltro}
+                  parametroDeOrdenacao= {this.state.parametroDeOrdenacao}
+                  tipoDeOrdenacao= {this.state.tipoDeOrdenacao}/>
     }
   }
   
@@ -270,7 +322,6 @@ class App extends React.Component {
             {this.footer()}
           </Footer>
           
-
         </Container>
     );
   }
