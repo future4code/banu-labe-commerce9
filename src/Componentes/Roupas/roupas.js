@@ -30,6 +30,11 @@ const BotaoAdicionar = styled.button`
     border: none;
     border: 1px solid black;
     
+    &:active{
+        background-color: lightblue;
+    }
+    
+    
 `
 
 class Roupas  extends React.Component {
@@ -61,7 +66,6 @@ class Roupas  extends React.Component {
             }
         ],
 
-        carrinhoRoupas: [],
     }
 
      adicionarCarrinho (id){
@@ -71,12 +75,7 @@ class Roupas  extends React.Component {
             }
         })
 
-        this.setState({carrinhoRoupas: [
-            ...this.state.carrinhoRoupas,
-            produtosEscolhidos
-        ]})
-        
-        localStorage.setItem("carrinhoRoupas", JSON.stringify(this.state.carrinhoRoupas))
+        localStorage.setItem("carrinhoRoupas", JSON.stringify(produtosEscolhidos))
     }  
 
     render() {
@@ -102,7 +101,7 @@ class Roupas  extends React.Component {
                     }
                 })
                 .map((produto)=> 
-                    <Produto>
+                    <Produto key={produto.id}>
                         <ImagemProduto src={produto.imagem}/>
                         <NomeProduto>{produto.nome}</NomeProduto>
                         <ValorProduto>{produto.preco}</ValorProduto>

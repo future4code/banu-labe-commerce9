@@ -3,20 +3,40 @@ import styled from "styled-components";
 
 
 
+
 class Carrinho extends React.Component{
+
     state = {
-        carrinho: []
+        carrinhoNaves: [],
+        carrinhoViagens: [],
+        carrinhoRoupas: [],
     }
     
+    componentDidMount(){
+        const navesLS = localStorage.getItem('carrinhoNaves')
+        this.setState({carrinhoNaves: JSON.parse(navesLS)}) 
+        const viagensLS = localStorage.getItem('carrinhoViagens')
+        this.setState({carrinhoViagens: JSON.parse(viagensLS)})
+        const roupasLS = localStorage.getItem('carrinhoRoupas')
+        this.setState({carrinhoRoupas: JSON.parse(roupasLS)})
+    
+    }
 
-    
-    
     render(){
         return(
             <div>
-
-            </div>
-
+               <div>{this.state.carrinhoNaves.map((produto)=>{
+                    return produto.nome
+                })}</div>
+                <div>
+                {this.state.carrinhoViagens.map((produto)=>{
+                    return produto.name
+                })}</div>
+                <div>
+                {this.state.carrinhoRoupas.map((produto)=>{
+                    return produto.nome
+                })}</div>  
+            </div> 
         )
     }
 }
