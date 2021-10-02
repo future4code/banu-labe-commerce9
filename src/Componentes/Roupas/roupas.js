@@ -69,6 +69,7 @@ class Roupas  extends React.Component {
                 quantidade: 0,
             }
         ],
+        carrinhoRoupas: [],
 
     }
 
@@ -81,14 +82,22 @@ class Roupas  extends React.Component {
             }
         })
         
-        const produtosEscolhidos = this.state.produtos.filter((produto) =>{
+        this.state.produtos.filter((produto) =>{
             if (id === produto.id){
-                return produto
+                const carrinhoR = {}
+                carrinhoR.nome = produto.nome
+                carrinhoR.quantidade = produto.quantidade
+                carrinhoR.preco = produto.preco
+                
+                this.setState({carrinhoRoupas: [...this.state.carrinhoRoupas, carrinhoR]})   
             }
         })
 
-        localStorage.setItem("carrinhoRoupas", JSON.stringify(produtosEscolhidos))
     }  
+
+    componentDidUpdate(){        
+        localStorage.setItem("carrinhoRoupas", JSON.stringify(this.state.carrinhoRoupas))
+    }
 
     render() {
         return (

@@ -130,7 +130,7 @@ class Naves extends React.Component{
 
         },
         ],
-
+        carrinhoNaves: [],
     }
 
     
@@ -139,23 +139,28 @@ class Naves extends React.Component{
         this.state.naves.map((nave) => {
             if (id === nave.id){
                 nave.quantidade = nave.quantidade+1
-              
             }
         })
 
-
-        const produtosEscolhidos = this.state.naves.filter((nave) =>{
-            if (id === nave.id){
-    
-
-                return nave
-            }
-        })
         
-        localStorage.setItem("carrinhoNaves", JSON.stringify(produtosEscolhidos))
+        
+        this.state.naves.filter((nave) =>{
+            if (id === nave.id){
+                const carrinhoN = {}
+                carrinhoN.nome = nave.nome
+                carrinhoN.quantidade = nave.quantidade
+                carrinhoN.preco = nave.preco
+
+                this.setState({carrinhoNaves: [...this.state.carrinhoNaves, carrinhoN]})   
+            }
+        })
+
     }
      
-
+    componentDidUpdate(){        
+        localStorage.setItem("carrinhoNaves", JSON.stringify(this.state.carrinhoNaves))
+    }
+    
     render(){
         
         return(

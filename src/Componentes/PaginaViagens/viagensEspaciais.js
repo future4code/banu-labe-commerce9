@@ -114,6 +114,7 @@ class ViagensEspaciais extends React.Component {
             }
         ],
 
+        carrinhoViagens: [],
     }
 
     adicionarCarrinho (id){
@@ -125,13 +126,21 @@ class ViagensEspaciais extends React.Component {
             }
         })
         
-        const produtosEscolhidos = this.state.viagens.filter((viagem) =>{
+        this.state.viagens.filter((viagem) =>{
             if (id === viagem.id){
-                return viagem
+                const carrinhoV = {}
+                carrinhoV.nome = viagem.name
+                carrinhoV.quantidade = viagem.quantidade
+                carrinhoV.preco = viagem.value
+                
+                this.setState({carrinhoViagens: [...this.state.carrinhoViagens, carrinhoV]})   
             }
         })
         
-        localStorage.setItem("carrinhoViagens", JSON.stringify(produtosEscolhidos))
+    }
+
+    componentDidUpdate(){        
+        localStorage.setItem("carrinhoViagens", JSON.stringify(this.state.carrinhoViagens))
     }
 
     render() {
