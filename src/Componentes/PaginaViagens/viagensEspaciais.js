@@ -39,6 +39,10 @@ const BotaoAdicionar = styled.button`
     color: black;
     border: none;
     border: 1px solid black;
+    &:active{
+        background-color: lightblue;
+    }
+    
     
 `
 
@@ -101,23 +105,17 @@ class ViagensEspaciais extends React.Component {
             }
         ],
 
-        carrinhoViagens: [],
     }
 
-/*     adicionarCarrinho (id){
+    adicionarCarrinho (id){
         const produtosEscolhidos = this.state.viagens.filter((viagem) =>{
             if (id === viagem.id){
                 return viagem
             }
         })
-
-        this.setState({carrinhoViagens: [
-            ...this.state.carrinhoViagens,
-            produtosEscolhidos
-        ]})
         
-        localStorage.setItem("carrinhoViagens", JSON.stringify(this.state.carrinhoViagens))
-    } */
+        localStorage.setItem("carrinhoViagens", JSON.stringify(produtosEscolhidos))
+    }
 
     render() {
         return(

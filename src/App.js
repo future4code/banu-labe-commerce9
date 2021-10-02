@@ -6,6 +6,8 @@ import Roupas from './Componentes/Roupas/roupas';
 import ImgBackground from './imagens/galaxia.jpeg';
 import Carrinho from './Componentes/Carrinho/Carrinho';
 
+
+
 const TipoDeOrdenacao = styled.div`
   display: flex;
   justify-content: center;
@@ -32,7 +34,6 @@ const Ordenacao = styled.div`
 const Header = styled.header `
   grid-column: 1/3;
   grid-row: 1/2;
- /*   background: #696969;  */
 
   color: white;
  
@@ -128,7 +129,6 @@ const Filtros = styled.div`
 
 `
 
-
 class App extends React.Component {
   state = {
     pageRender: 'viagens', 
@@ -137,14 +137,15 @@ class App extends React.Component {
     valorMinimo:'',
     nomeFiltro: '',
     parametroDeOrdenacao: "preco",
-    tipoDeOrdenacao: 1
+    tipoDeOrdenacao: 1,
+  
   }
 
   header = () => {
     return(
       <header style={{backgroundImage: `url(${ImgBackground})`}}>
         <h2>🚀Galáxia 42</h2>
-        <button onClick={this.onClickAdicionarCarrinho()}>Carrinho</button>
+        <button value={'carrinho'} onClick={this.onClickAdicionarCarrinho}>Carrinho</button>
       </header>
     )
   }
@@ -234,7 +235,7 @@ class App extends React.Component {
 
   footer = () => {
     return(
-      <Footer>
+      <Footer >
         <p>Todos os direitos reservados. ©</p>
       </Footer>
     )
@@ -256,6 +257,8 @@ class App extends React.Component {
                   nomeFiltro= {this.state.nomeFiltro}
                   parametroDeOrdenacao= {this.state.parametroDeOrdenacao}
                   tipoDeOrdenacao= {this.state.tipoDeOrdenacao}/>
+      case 'carrinho':
+        return <Carrinho />
       default:
         return <ViagensEspaciais 
                   valorMaximo={this.state.valorMaximo} 
@@ -292,10 +295,16 @@ class App extends React.Component {
 
   }
 
-  onClickAdicionarCarrinho = () => {
-    const produtosNaves = localStorage.getItem("carrinhoNaves")
-    
-  }
+   onClickAdicionarCarrinho = () => {
+    this.setState(
+      {
+        pageRender: 'carrinho'
+      }
+    )
+
+  } 
+  
+   
 
   render(){
     
@@ -307,16 +316,18 @@ class App extends React.Component {
 
           <Filtros>
             {this.filtros()}
+         
           </Filtros>
 
           <Main>
             <Opcoes>
               {this.menuOpcoes()}
             </Opcoes>
-            {this.paginaRenderizada()}
-            
-                       
+            {this.paginaRenderizada()}  
+
           </Main>
+
+          
 
           <Footer>
             {this.footer()}

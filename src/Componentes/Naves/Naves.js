@@ -39,6 +39,10 @@ const BotaoAdicionar = styled.button`
     color: black;
     border: none;
     border: 1px solid black;
+
+    &:active{
+        background-color: lightblue;
+    }
     
 `
 
@@ -117,26 +121,19 @@ class Naves extends React.Component{
         },
         ],
 
-        carrinhoNaves: [],
-
     }
 
-
-/*     adicionarCarrinho (id){
+    
+    adicionarCarrinho (id){
         const produtosEscolhidos = this.state.naves.filter((nave) =>{
             if (id === nave.id){
                 return nave
             }
         })
-
-        this.setState({carrinhoNaves: [
-            ...this.state.carrinhoNaves,
-            produtosEscolhidos
-        ]})
         
-        localStorage.setItem("carrinhoNaves", JSON.stringify(this.state.carrinho))
+        localStorage.setItem("carrinhoNaves", JSON.stringify(produtosEscolhidos))
     }
-     */
+     
 
     render(){
         
@@ -164,7 +161,7 @@ class Naves extends React.Component{
                 })
                 .map((nave) =>{
                     return (
-                        <Produto key={nave.id}>
+                        <Produto key={nave.id} selecionados={this.state.carrinhoNaves}>
                             <ImagemProduto src={nave.imagem} />
                             <NomeProduto>{nave.nome}</NomeProduto>
                             <ValorProduto>R${nave.preco},00</ValorProduto>
