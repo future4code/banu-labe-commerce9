@@ -54,6 +54,7 @@ class Naves extends React.Component{
             imagem: soyuz09,
             preco: 10,
             id: 10,
+            quantidade: 0,
            
         },
         {
@@ -61,6 +62,7 @@ class Naves extends React.Component{
             imagem: shenzhou,
             preco: 10,
             id: 11,
+            quantidade: 0,
 
         },
         {
@@ -68,6 +70,7 @@ class Naves extends React.Component{
             imagem: newshepard,
             preco: 10,
             id: 12,
+            quantidade: 0,
 
         },
         {
@@ -75,6 +78,7 @@ class Naves extends React.Component{
             imagem: spaceshiptwo,
             preco: 10,
             id: 13,
+            quantidade: 0,
 
         },
         {
@@ -82,6 +86,7 @@ class Naves extends React.Component{
             imagem: orion,
             preco: 10,
             id: 14,
+            quantidade: 0,
 
         },
         {
@@ -89,6 +94,7 @@ class Naves extends React.Component{
             imagem: dragonv2,
             preco: 10,
             id: 15,
+            quantidade: 0,
 
         },
         {
@@ -96,6 +102,7 @@ class Naves extends React.Component{
             imagem: dreamchaser,
             preco: 10,
             id: 16,
+            quantidade: 0,
 
         },
         {
@@ -103,6 +110,7 @@ class Naves extends React.Component{
             imagem: lynx,
             preco: 10,
             id: 17,
+            quantidade: 0,
 
         },
         {
@@ -110,6 +118,7 @@ class Naves extends React.Component{
             imagem: starship,
             preco: 10,
             id: 18,
+            quantidade: 0,
 
         },
         {
@@ -117,24 +126,41 @@ class Naves extends React.Component{
             imagem: sls,
             preco: 8,
             id: 19,
+            quantidade: 0,
 
         },
         ],
-
+        carrinhoNaves: [],
     }
 
     
     adicionarCarrinho (id){
-        const produtosEscolhidos = this.state.naves.filter((nave) =>{
+
+        this.state.naves.map((nave) => {
             if (id === nave.id){
-                return nave
+                nave.quantidade = nave.quantidade+1
             }
         })
+
         
-        localStorage.setItem("carrinhoNaves", JSON.stringify(produtosEscolhidos))
+        
+        this.state.naves.filter((nave) =>{
+            if (id === nave.id){
+                const carrinhoN = {}
+                carrinhoN.nome = nave.nome
+                carrinhoN.quantidade = nave.quantidade
+                carrinhoN.preco = nave.preco
+
+                this.setState({carrinhoNaves: [...this.state.carrinhoNaves, carrinhoN]})   
+            }
+        })
+
     }
      
-
+    componentDidUpdate(){        
+        localStorage.setItem("carrinhoNaves", JSON.stringify(this.state.carrinhoNaves))
+    }
+    
     render(){
         
         return(

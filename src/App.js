@@ -327,8 +327,6 @@ class App extends React.Component {
 
           </Main>
 
-          
-
           <Footer>
             {this.footer()}
           </Footer>

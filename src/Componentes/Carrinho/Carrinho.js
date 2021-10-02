@@ -10,6 +10,7 @@ class Carrinho extends React.Component{
         carrinhoNaves: [],
         carrinhoViagens: [],
         carrinhoRoupas: [],
+        carrinho: [],
     }
     
     componentDidMount(){
@@ -18,27 +19,66 @@ class Carrinho extends React.Component{
         const viagensLS = localStorage.getItem('carrinhoViagens')
         this.setState({carrinhoViagens: JSON.parse(viagensLS)})
         const roupasLS = localStorage.getItem('carrinhoRoupas')
-        this.setState({carrinhoRoupas: JSON.parse(roupasLS)})
+        this.setState({carrinhoRoupas: JSON.parse(roupasLS)}) 
     
     }
 
+
+
+    retornaProdutosNaves (){
+        
+        const produtosNaves = this.state.carrinhoNaves.map((nave) =>{
+            return (
+            <div>
+                <p>{nave.quantidade} x {nave.nome} - {nave.preco}</p>
+            </div>
+            )
+        })
+
+        return produtosNaves
+    }
+
+    retornaProdutosViagens (){
+        
+        const produtosViagens = this.state.carrinhoViagens.map((viagem) =>{
+            return (
+            <div>
+                <p>{viagem.quantidade} x {viagem.nome} - {viagem.preco}</p>
+            </div>
+            )
+        })
+
+        return produtosViagens
+    }
+    
+    retornaProdutosRoupas (){
+        
+        const produtosRoupas = this.state.carrinhoRoupas.map((roupa) =>{
+            return (
+            <div>
+                <p>{roupa.quantidade} x {roupa.nome} - {roupa.preco}</p>
+            </div>
+            )
+        })
+
+        return produtosRoupas
+    }
+        
+    
+ 
+
+
     render(){
+
         return(
             <div>
-               <div>{this.state.carrinhoNaves.map((produto)=>{
-                    return produto.nome
-                })}</div>
-                <div>
-                {this.state.carrinhoViagens.map((produto)=>{
-                    return produto.name
-                })}</div>
-                <div>
-                {this.state.carrinhoRoupas.map((produto)=>{
-                    return produto.nome
-                })}</div>  
+                {this.retornaProdutosNaves()}
+                {this.retornaProdutosViagens()}
+                {this.retornaProdutosRoupas()}
+ 
             </div> 
         )
     }
-}
 
+}
 export default Carrinho
