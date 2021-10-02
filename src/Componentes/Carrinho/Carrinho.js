@@ -23,19 +23,23 @@ class Carrinho extends React.Component{
     }
 
     retornaProdutos (){
-        return( <div>
-            <div>{this.state.carrinhoNaves.map((produto)=>{
-                return produto.nome
-            })}</div>
-            <div>
-            {this.state.carrinhoViagens.map((produto)=>{
-                return produto.name
-            })}</div>
-            <div>
-            {this.state.carrinhoRoupas.map((produto)=>{
-                return produto.nome
-            })}</div>
-        </div>
+        return( 
+        <div>
+                <div>
+                {this.state.carrinhoNaves.map((produto)=>{
+                    return produto.nome
+                })}
+
+                {this.state.carrinhoViagens.map((produto)=>{
+                    return produto.name
+                })}
+
+                {this.state.carrinhoRoupas.map((produto)=>{
+                    return produto.nome
+                })}
+                </div>
+                
+            </div>
         )
     }
     render(){
