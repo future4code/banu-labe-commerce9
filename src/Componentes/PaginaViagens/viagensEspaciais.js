@@ -53,61 +53,78 @@ class ViagensEspaciais extends React.Component {
                 id: 1,
                 name: "Viagem em volta do Planeta Mercúrio",
                 value: 10000.00,
-                image: mercurio
+                image: mercurio,
+                quantidade: 0,
             },
             {
                 id: 2,
                 name: "Viagem em volta do Planeta Vênus",
                 value: 15000.00,
-                image: venus
+                image: venus,
+                quantidade: 0,
             },
             {
                 id: 3,
                 name: "Viagem em volta do Planeta Terra",
                 value: 20000.00,
-                image: terra
+                image: terra,
+                quantidade: 0,
             },
             {
                 id: 4,
                 name: "Viagem em volta do Planeta Marte",
                 value: 25000.00,
-                image: marte
+                image: marte,
+                quantidade: 0,
             },
             {
                 id: 5,
                 name: "Viagem em volta do Planeta Júpiter",
                 value: 35000.00,
-                image: jupiter
+                image: jupiter,
+                quantidade: 0,
             },
             {
                 id: 6,
                 name: "Viagem em volta do Planeta Saturno",
                 value: 45000.00,
-                image: saturno
+                image: saturno,
+                quantidade: 0,
             },
             {
                 id: 7,
                 name: "Viagem em volta do Planeta Urano",
                 value: 55000.00,
-                image: urano
+                image: urano,
+                quantidade: 0,
             },
             {
                 id: 8,
                 name: "Viagem em volta do Planeta Netuno",
                 value: 65000.00,
-                image: netuno
+                image: netuno,
+                quantidade: 0,
             },
             {
                 id: 9,
                 name: "Viagem de Mercúrio até Netuno.",
                 value: 250000.00,
-                image: sistemasolar
+                image: sistemasolar,
+                quantidade: 0,
             }
         ],
 
     }
 
     adicionarCarrinho (id){
+
+        this.state.viagens.map((viagem) => {
+            if (id === viagem.id){
+                viagem.quantidade = viagem.quantidade+1
+              
+            }
+        })
+        
         const produtosEscolhidos = this.state.viagens.filter((viagem) =>{
             if (id === viagem.id){
                 return viagem
