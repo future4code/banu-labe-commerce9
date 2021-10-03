@@ -117,6 +117,7 @@ class ViagensEspaciais extends React.Component {
         carrinhoViagens: [],
     }
 
+
     adicionarCarrinho (id){
 
         this.state.viagens.map((viagem) => {
@@ -128,12 +129,13 @@ class ViagensEspaciais extends React.Component {
         
         this.state.viagens.filter((viagem) =>{
             if (id === viagem.id){
-                const carrinhoV = {}
-                carrinhoV.nome = viagem.name
-                carrinhoV.quantidade = viagem.quantidade
-                carrinhoV.preco = viagem.value
-                
-                this.setState({carrinhoViagens: [...this.state.carrinhoViagens, carrinhoV]})   
+                if(this.state.carrinhoViagens.includes(viagem)){
+                    const n = [...this.state.carrinhoViagens]
+                    n.splice(n.indexOf(viagem),1, viagem)
+                    this.setState({carrinhoViagens: n})
+                } else {
+                    this.setState({carrinhoViagens: [...this.state.carrinhoViagens, viagem]})
+                }   
             }
         })
         

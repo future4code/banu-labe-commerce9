@@ -20,33 +20,34 @@ class Carrinho extends React.Component{
         this.setState({carrinhoViagens: JSON.parse(viagensLS)})
         const roupasLS = localStorage.getItem('carrinhoRoupas')
         this.setState({carrinhoRoupas: JSON.parse(roupasLS)}) 
-    
+   
     }
 
 
     retornaProdutosNaves (){  
         if (this.state.carrinhoNaves !== null){
-            const produtosNaves = this.state.carrinhoNaves.map((nave) =>{
+             const produtosNaves = this.state.carrinhoNaves.map((nave) =>{
                 return (
                     <div>
                         <p>{nave.quantidade} x {nave.nome} - {nave.preco}</p>
                     </div>
                 )
             })
+            return produtosNaves 
             
-            return produtosNaves
 
         } else if (this.state.carrinhoNaves === null || this.state.carrinhoNaves === []){
             return <p></p>
         } 
     }
 
+
     retornaProdutosViagens (){
         if (this.state.carrinhoViagens !== null){
             const produtosViagens = this.state.carrinhoViagens.map((viagem) =>{
                 return (
                 <div>
-                    <p>{viagem.quantidade} x {viagem.nome} - {viagem.preco}</p>
+                    <p>{viagem.quantidade} x {viagem.name} - {viagem.value}</p>
                 </div>
                 )
             })
@@ -84,6 +85,7 @@ class Carrinho extends React.Component{
 
         return(
             <div>
+            
                 {this.retornaProdutosNaves()}
                 {this.retornaProdutosViagens()}
                 {this.retornaProdutosRoupas()} 

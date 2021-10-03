@@ -141,20 +141,19 @@ class Naves extends React.Component{
                 nave.quantidade = nave.quantidade+1
             }
         })
-        
 
         this.state.naves.filter((nave) =>{
             if (id === nave.id){
-                const carrinhoN = {}
-                carrinhoN.id = nave.id
-                carrinhoN.nome = nave.nome
-                carrinhoN.quantidade = nave.quantidade
-                carrinhoN.preco = nave.preco
-
-                this.setState({carrinhoNaves: [...this.state.carrinhoNaves, carrinhoN]})   
+                if(this.state.carrinhoNaves.includes(nave)){
+                    const n = [...this.state.carrinhoNaves]
+                    n.splice(n.indexOf(nave),1, nave)
+                    this.setState({carrinhoNaves: n})
+                } else {
+                    this.setState({carrinhoNaves: [...this.state.carrinhoNaves, nave]})
+                }                   
             }
         })
-
+   
     }
      
     componentDidUpdate(){   
