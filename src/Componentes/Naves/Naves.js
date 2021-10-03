@@ -141,12 +141,12 @@ class Naves extends React.Component{
                 nave.quantidade = nave.quantidade+1
             }
         })
+        
 
-        
-        
         this.state.naves.filter((nave) =>{
             if (id === nave.id){
                 const carrinhoN = {}
+                carrinhoN.id = nave.id
                 carrinhoN.nome = nave.nome
                 carrinhoN.quantidade = nave.quantidade
                 carrinhoN.preco = nave.preco
@@ -157,7 +157,7 @@ class Naves extends React.Component{
 
     }
      
-    componentDidUpdate(){        
+    componentDidUpdate(){   
         localStorage.setItem("carrinhoNaves", JSON.stringify(this.state.carrinhoNaves))
     }
     
