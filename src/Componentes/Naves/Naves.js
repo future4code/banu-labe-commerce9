@@ -44,6 +44,9 @@ const BotaoAdicionar = styled.button`
         background-color: lightblue;
     }
     
+    :hover {
+        cursor: pointer;
+    
 `
 
 class Naves extends React.Component{

@@ -15,6 +15,10 @@ const TipoDeOrdenacao = styled.div`
   select{
     width: 100px;
   }
+
+  select:hover {
+    cursor: pointer;
+  }
 `
 
 const Ordenacao = styled.div`
@@ -25,9 +29,15 @@ const Ordenacao = styled.div`
 
   select{
     width: 100px;
+    
   }
   label{
     font-size: 20px;
+  }
+
+  select:hover {
+    cursor:pointer;
+    
   }
 `
 
@@ -47,6 +57,10 @@ const Header = styled.header `
     >button {
       height:30px;
       align-self: center;
+      
+      :hover {
+        cursor: pointer;
+      }
     }
   } 
 `
@@ -88,6 +102,8 @@ const Opcoes = styled.div `
     :visited {
       color:black;
     }
+    :hover {
+      cursor: pointer;
   }
  
 `
@@ -144,7 +160,7 @@ class App extends React.Component {
   header = () => {
     return(
       <header style={{backgroundImage: `url(${ImgBackground})`}}>
-        <h2>🚀Galáxia 42</h2>
+        <h2 onClick={this.onClickNaves}>🚀Galáxia 42</h2>
         <button value={'carrinho'} onClick={this.onClickAdicionarCarrinho}>Carrinho</button>
       </header>
     )
@@ -177,7 +193,6 @@ class App extends React.Component {
               onChange={this.onChangeNomeFiltro} 
               type="text"/>
         </div>
-        <button> Buscar </button>
       </Filtros>
     )
   }
@@ -301,6 +316,7 @@ class App extends React.Component {
         pageRender: 'carrinho'
       }
     )
+    
 
   } 
   

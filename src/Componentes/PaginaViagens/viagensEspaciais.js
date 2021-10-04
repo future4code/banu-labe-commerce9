@@ -42,7 +42,8 @@ const BotaoAdicionar = styled.button`
     &:active{
         background-color: lightblue;
     }
-    
+    :hover {
+        cursor: pointer;   
     
 `
 
@@ -123,7 +124,6 @@ class ViagensEspaciais extends React.Component {
         this.state.viagens.map((viagem) => {
             if (id === viagem.id){
                 viagem.quantidade = viagem.quantidade+1
-              
             }
         })
         
