@@ -73,7 +73,8 @@ class Roupas  extends React.Component {
 
     }
 
-     adicionarCarrinho (id){
+    
+    adicionarCarrinho (id){
 
         this.state.produtos.map((produto) => {
             if (id === produto.id){
@@ -84,12 +85,13 @@ class Roupas  extends React.Component {
         
         this.state.produtos.filter((produto) =>{
             if (id === produto.id){
-                const carrinhoR = {}
-                carrinhoR.nome = produto.nome
-                carrinhoR.quantidade = produto.quantidade
-                carrinhoR.preco = produto.preco
-                
-                this.setState({carrinhoRoupas: [...this.state.carrinhoRoupas, carrinhoR]})   
+                if(this.state.carrinhoRoupas.includes(produto)){
+                    const n = [...this.state.carrinhoRoupas]
+                    n.splice(n.indexOf(produto),1, produto)
+                    this.setState({carrinhoRoupas: n})
+                } else {
+                    this.setState({carrinhoRoupas: [...this.state.carrinhoRoupas, produto]})
+                }   
             }
         })
 
