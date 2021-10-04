@@ -235,7 +235,7 @@ class App extends React.Component {
 
   footer = () => {
     return(
-      <Footer >
+      <Footer style={{backgroundImage: `url(${ImgBackground})`}}>
         <p>Todos os direitos reservados. ©</p>
       </Footer>
     )
@@ -327,7 +327,7 @@ class App extends React.Component {
 
           </Main>
 
-          <Footer>
+          <Footer style={{backgroundImage: `url(${ImgBackground})`}}>
             {this.footer()}
           </Footer>
           

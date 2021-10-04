@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-
+const CarrinhoContainer = styled.div `
+    height: 63vh
+`
 
 
 class Carrinho extends React.Component{
@@ -84,13 +86,13 @@ class Carrinho extends React.Component{
     render(){
 
         return(
-            <div>
+            <CarrinhoContainer>
             
                 {this.retornaProdutosNaves()}
                 {this.retornaProdutosViagens()}
                 {this.retornaProdutosRoupas()} 
                 {this.retornaVazio()}
-            </div> 
+            </CarrinhoContainer> 
         )
     }
 
