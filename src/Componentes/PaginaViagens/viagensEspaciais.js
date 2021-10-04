@@ -42,7 +42,8 @@ const BotaoAdicionar = styled.button`
     &:active{
         background-color: lightblue;
     }
-    
+    :hover {
+        cursor: pointer;   
     
 `
 
@@ -52,63 +53,63 @@ class ViagensEspaciais extends React.Component {
             {
                 id: 1,
                 name: "Viagem em volta do Planeta Mercúrio",
-                value: 10000.00,
+                value: 10000,
                 image: mercurio,
                 quantidade: 0,
             },
             {
                 id: 2,
                 name: "Viagem em volta do Planeta Vênus",
-                value: 15000.00,
+                value: 15000,
                 image: venus,
                 quantidade: 0,
             },
             {
                 id: 3,
                 name: "Viagem em volta do Planeta Terra",
-                value: 20000.00,
+                value: 20000,
                 image: terra,
                 quantidade: 0,
             },
             {
                 id: 4,
                 name: "Viagem em volta do Planeta Marte",
-                value: 25000.00,
+                value: 25000,
                 image: marte,
                 quantidade: 0,
             },
             {
                 id: 5,
                 name: "Viagem em volta do Planeta Júpiter",
-                value: 35000.00,
+                value: 35000,
                 image: jupiter,
                 quantidade: 0,
             },
             {
                 id: 6,
                 name: "Viagem em volta do Planeta Saturno",
-                value: 45000.00,
+                value: 45000,
                 image: saturno,
                 quantidade: 0,
             },
             {
                 id: 7,
                 name: "Viagem em volta do Planeta Urano",
-                value: 55000.00,
+                value: 55000,
                 image: urano,
                 quantidade: 0,
             },
             {
                 id: 8,
                 name: "Viagem em volta do Planeta Netuno",
-                value: 65000.00,
+                value: 65000,
                 image: netuno,
                 quantidade: 0,
             },
             {
                 id: 9,
                 name: "Viagem de Mercúrio até Netuno.",
-                value: 250000.00,
+                value: 250000,
                 image: sistemasolar,
                 quantidade: 0,
             }
@@ -119,11 +120,10 @@ class ViagensEspaciais extends React.Component {
 
 
     adicionarCarrinho (id){
-
         this.state.viagens.map((viagem) => {
             if (id === viagem.id){
                 viagem.quantidade = viagem.quantidade+1
-              
+                alert("Produto adicionado com sucesso")
             }
         })
         
@@ -173,7 +173,7 @@ class ViagensEspaciais extends React.Component {
                         <Produto key= {indice}>
                             <ImagemProduto src={iten.image} alt= "Planeta"/>
                             <NomeProduto>{iten.name}</NomeProduto>
-                            <ValorProduto>R$ {iten.value}</ValorProduto>
+                            <ValorProduto>R$ {(Math.round(iten.value * 100) / 100).toFixed(2)}</ValorProduto>
                             <BotaoAdicionar onClick={() => this.adicionarCarrinho(iten.id)}>Adicionar ao Carrinho</BotaoAdicionar>
                         </Produto>
                     )

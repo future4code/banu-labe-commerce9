@@ -19,6 +19,7 @@ const ImagemProduto = styled.img`
 `
 const NomeProduto = styled.h3`
     text-align: center;
+
 `
 
 const ValorProduto = styled.p`
@@ -32,9 +33,10 @@ const BotaoAdicionar = styled.button`
     
     &:active{
         background-color: lightblue;
+        
     }
-    
-    
+    :hover {
+        cursor: pointer; 
 `
 
 class Roupas  extends React.Component {
@@ -44,28 +46,28 @@ class Roupas  extends React.Component {
                 id:20,
                 nome: `Roupa Espacial Normal`,
                 preco: 1500,
-                imagem: `https://ichef.bbci.co.uk/news/224/amz/worldservice/live/assets/images/2014/05/02/140502075522_nasa_z1_spacesuit_224x280_nasa.jpg`,
+                imagem: `https://extra.globo.com/incoming/4656823-a00-bed/w533h800/spacesuitglobo.jpg`,
                 quantidade: 0,
             },
             {
                 id:21,
                 nome: `Roupa Espacial Versão Premium`,
                 preco: 1800,
-                imagem: `https://w7.pngwing.com/pngs/424/49/png-transparent-astronaut-space-suit-outer-space-space-exploration-astronaut-chemical-space-mitsubishi.png`,
+                imagem: `https://img.ibxk.com.br/2012/2/materias/2380944129112039.jpg`,
                 quantidade: 0,
             },
             {
                 id:22,
                 nome: `Roupa Espacial Laranja`,
                 preco: 1600,
-                imagem: `https://i.pinimg.com/originals/d9/45/21/d94521ee32233b8ad3a3befe7d85242a.jpg`,
+                imagem: `https://media.gazetadopovo.com.br/2019/10/17122621/48905248553_c0a868bbb4_c.jpg`,
                 quantidade: 0,
             },
             {
                 id:23,
-                nome: `Roupa Espacial Com detalhes Laranjas`,
+                nome: `Roupa Espacial e Especial , com Buttons`,
                 preco: 2500,
-                imagem: `https://media.istockphoto.com/photos/astronaut-in-a-space-suit-picture-id155378758`,
+                imagem: `https://ids.si.edu/ids/deliveryService?id=NASM-A19730040000-NASM2018-02096&max=900`,
                 quantidade: 0,
             }
         ],
@@ -79,7 +81,7 @@ class Roupas  extends React.Component {
         this.state.produtos.map((produto) => {
             if (id === produto.id){
                 produto.quantidade = produto.quantidade+1
-              
+                alert("Produto adicionado com sucesso") 
             }
         })
         
@@ -127,7 +129,7 @@ class Roupas  extends React.Component {
                     <Produto key={produto.id}>
                         <ImagemProduto src={produto.imagem}/>
                         <NomeProduto>{produto.nome}</NomeProduto>
-                        <ValorProduto>{produto.preco}</ValorProduto>
+                        <ValorProduto>R$ {(Math.round(produto.preco * 100) / 100).toFixed(2)}</ValorProduto>
                         <BotaoAdicionar onClick={() => this.adicionarCarrinho(produto.id)}>Adicionar ao carrinho</BotaoAdicionar>
                     </Produto>)} 
             </ProdutosContainer>

@@ -2,7 +2,32 @@ import React from "react";
 import styled from "styled-components";
 
 
+const ContainerCardCarrinho = styled.div `
+    display:flex;
 
+  
+
+
+` 
+
+const ContainerCardCarrinhoQuantidade = styled.div `
+    width: 10%;
+    border: 1px solid black;
+    padding: 3px;
+` 
+
+const ContainerCardCarrinhoNome = styled.div `
+    width: 70%;
+    border: 1px solid black;
+    padding: 3px;
+` 
+
+const ContainerCardCarrinhoPreco = styled.div `
+    width: 20%;
+    border: 1px solid black;
+    padding: 3px;
+
+` 
 
 class Carrinho extends React.Component{
 
@@ -28,9 +53,11 @@ class Carrinho extends React.Component{
         if (this.state.carrinhoNaves !== null){
              const produtosNaves = this.state.carrinhoNaves.map((nave) =>{
                 return (
-                    <div>
-                        <p>{nave.quantidade} x {nave.nome} - {nave.preco}</p>
-                    </div>
+                    <ContainerCardCarrinho>
+                        <ContainerCardCarrinhoQuantidade>{nave.quantidade}</ContainerCardCarrinhoQuantidade>
+                        <ContainerCardCarrinhoNome>{nave.nome}</ContainerCardCarrinhoNome> 
+                        <ContainerCardCarrinhoPreco>R$ {(Math.round(nave.preco * 100) / 100).toFixed(2)}</ContainerCardCarrinhoPreco>
+                    </ContainerCardCarrinho>
                 )
             })
             return produtosNaves 
@@ -46,9 +73,11 @@ class Carrinho extends React.Component{
         if (this.state.carrinhoViagens !== null){
             const produtosViagens = this.state.carrinhoViagens.map((viagem) =>{
                 return (
-                <div>
-                    <p>{viagem.quantidade} x {viagem.name} - {viagem.value}</p>
-                </div>
+              <ContainerCardCarrinho>
+                        <ContainerCardCarrinhoQuantidade>{viagem.quantidade}</ContainerCardCarrinhoQuantidade>
+                        <ContainerCardCarrinhoNome>{viagem.name}</ContainerCardCarrinhoNome> 
+                        <ContainerCardCarrinhoPreco>R$ {(Math.round(viagem.value * 100) / 100).toFixed(2)}</ContainerCardCarrinhoPreco>
+                    </ContainerCardCarrinho>
                 )
             })
             return produtosViagens
@@ -61,9 +90,11 @@ class Carrinho extends React.Component{
         if (this.state.carrinhoRoupas !== null){
             const produtosRoupas = this.state.carrinhoRoupas.map((roupa) =>{
                 return (
-                <div>
-                    <p>{roupa.quantidade} x {roupa.nome} - {roupa.preco}</p>
-                </div>
+                    <ContainerCardCarrinho>
+                    <ContainerCardCarrinhoQuantidade>{roupa.quantidade}</ContainerCardCarrinhoQuantidade>
+                    <ContainerCardCarrinhoNome>{roupa.nome}</ContainerCardCarrinhoNome> 
+                    <ContainerCardCarrinhoPreco>R$ {(Math.round(roupa.preco * 100) / 100).toFixed(2)}</ContainerCardCarrinhoPreco>
+                </ContainerCardCarrinho>
                 )
             })
 
@@ -80,12 +111,17 @@ class Carrinho extends React.Component{
                 return <p> O carrinho está vazio </p>
         }
     }
+    
 
     render(){
 
         return(
             <div>
-            
+                <ContainerCardCarrinho>
+                    <ContainerCardCarrinhoQuantidade>Quantidade</ContainerCardCarrinhoQuantidade>
+                    <ContainerCardCarrinhoNome>Nome</ContainerCardCarrinhoNome>
+                    <ContainerCardCarrinhoPreco>Preço</ContainerCardCarrinhoPreco>
+                </ContainerCardCarrinho>
                 {this.retornaProdutosNaves()}
                 {this.retornaProdutosViagens()}
                 {this.retornaProdutosRoupas()} 
