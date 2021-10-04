@@ -127,7 +127,7 @@ class Roupas  extends React.Component {
                     <Produto key={produto.id}>
                         <ImagemProduto src={produto.imagem}/>
                         <NomeProduto>{produto.nome}</NomeProduto>
-                        <ValorProduto>{produto.preco}</ValorProduto>
+                        <ValorProduto>R$ {(Math.round(produto.preco * 100) / 100).toFixed(2)}</ValorProduto>
                         <BotaoAdicionar onClick={() => this.adicionarCarrinho(produto.id)}>Adicionar ao carrinho</BotaoAdicionar>
                     </Produto>)} 
             </ProdutosContainer>

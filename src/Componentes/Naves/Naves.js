@@ -52,7 +52,7 @@ class Naves extends React.Component{
         {
             nome: 'Soyuz MS-09',
             imagem: soyuz09,
-            preco: 10,
+            preco: 10000,
             id: 10,
             quantidade: 0,
            
@@ -60,7 +60,7 @@ class Naves extends React.Component{
         {
             nome: 'Shenzhou',
             imagem: shenzhou,
-            preco: 10,
+            preco: 20000,
             id: 11,
             quantidade: 0,
 
@@ -68,7 +68,7 @@ class Naves extends React.Component{
         {
             nome: 'New Shepard',
             imagem: newshepard,
-            preco: 10,
+            preco: 15000,
             id: 12,
             quantidade: 0,
 
@@ -76,7 +76,7 @@ class Naves extends React.Component{
         {
             nome: 'SpaceShipTwo',
             imagem: spaceshiptwo,
-            preco: 10,
+            preco: 17000,
             id: 13,
             quantidade: 0,
 
@@ -84,7 +84,7 @@ class Naves extends React.Component{
         {
             nome: 'Orion',
             imagem: orion,
-            preco: 10,
+            preco: 9000,
             id: 14,
             quantidade: 0,
 
@@ -92,7 +92,7 @@ class Naves extends React.Component{
         {
             nome: 'Dragon V2',
             imagem: dragonv2,
-            preco: 10,
+            preco: 11000,
             id: 15,
             quantidade: 0,
 
@@ -100,7 +100,7 @@ class Naves extends React.Component{
         {
             nome: 'Dream Chaser',
             imagem: dreamchaser,
-            preco: 10,
+            preco: 10000,
             id: 16,
             quantidade: 0,
 
@@ -108,7 +108,7 @@ class Naves extends React.Component{
         {
             nome: 'Lynx',
             imagem: lynx,
-            preco: 10,
+            preco: 10000,
             id: 17,
             quantidade: 0,
 
@@ -116,7 +116,7 @@ class Naves extends React.Component{
         {
             nome: 'Starship',
             imagem: starship,
-            preco: 10,
+            preco: 20000,
             id: 18,
             quantidade: 0,
 
@@ -124,7 +124,7 @@ class Naves extends React.Component{
         {
             nome: 'Space Launch System',
             imagem: sls,
-            preco: 8,
+            preco: 8000,
             id: 19,
             quantidade: 0,
 
@@ -189,7 +189,7 @@ class Naves extends React.Component{
                         <Produto key={nave.id} selecionados={this.state.carrinhoNaves}>
                             <ImagemProduto src={nave.imagem} />
                             <NomeProduto>{nave.nome}</NomeProduto>
-                            <ValorProduto>R${nave.preco},00</ValorProduto>
+                            <ValorProduto>R$ {(Math.round(nave.preco * 100) / 100).toFixed(2)}</ValorProduto>
                             <BotaoAdicionar onClick={() => this.adicionarCarrinho(nave.id)}>Adicionar ao carrinho</BotaoAdicionar>
                         </Produto> 
                     )
