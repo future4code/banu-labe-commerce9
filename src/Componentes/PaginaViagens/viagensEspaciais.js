@@ -120,10 +120,10 @@ class ViagensEspaciais extends React.Component {
 
 
     adicionarCarrinho (id){
-
         this.state.viagens.map((viagem) => {
             if (id === viagem.id){
                 viagem.quantidade = viagem.quantidade+1
+                alert("Produto adicionado com sucesso")
             }
         })
         

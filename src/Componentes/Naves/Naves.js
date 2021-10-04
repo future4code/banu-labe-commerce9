@@ -142,6 +142,7 @@ class Naves extends React.Component{
         this.state.naves.map((nave) => {
             if (id === nave.id){
                 nave.quantidade = nave.quantidade+1
+                alert("Produto adicionado com sucesso")
             }
         })
 

@@ -81,7 +81,7 @@ class Roupas  extends React.Component {
         this.state.produtos.map((produto) => {
             if (id === produto.id){
                 produto.quantidade = produto.quantidade+1
-              
+                alert("Produto adicionado com sucesso") 
             }
         })
         
