@@ -15,7 +15,6 @@ const TipoDeOrdenacao = styled.div`
   select{
     width: 100px;
   }
-
   select:hover {
     cursor: pointer;
   }
@@ -29,15 +28,12 @@ const Ordenacao = styled.div`
 
   select{
     width: 100px;
-    
+  }
+  select:hover {
+    cursor: pointer;
   }
   label{
     font-size: 20px;
-  }
-
-  select:hover {
-    cursor:pointer;
-    
   }
 `
 
@@ -47,22 +43,23 @@ const Header = styled.header `
 
   color: white;
  
+  h2:hover {
+      cursor: pointer;
+    }
+  }
   header{
     display: flex;
     justify-content: space-between;
     margin: 0;
     padding: 0 20px;
-    
-    h2:hover {
-      cursor: pointer;
-    }
+   
+  
     >button {
       height:30px;
       align-self: center;
-      
-      :hover {
-        cursor: pointer;
-      }
+    }
+    button:hover {
+      cursor: pointer;
     }
   } 
 `
@@ -104,8 +101,9 @@ const Opcoes = styled.div `
     :visited {
       color:black;
     }
-    :hover {
+    :hover{
       cursor: pointer;
+    }
   }
  
 `
@@ -161,7 +159,7 @@ class App extends React.Component {
 
   header = () => {
     return(
-      <header  onClick={this.onClickViagens} style={{backgroundImage: `url(${ImgBackground})`}}>
+      <header style={{backgroundImage: `url(${ImgBackground})`}}>
         <h2 onClick={this.onClickViagens}>🚀Galáxia 42</h2>
         <button value={'carrinho'} onClick={this.onClickAdicionarCarrinho}>Carrinho</button>
       </header>
@@ -252,7 +250,7 @@ class App extends React.Component {
 
   footer = () => {
     return(
-      <Footer >
+      <Footer style={{backgroundImage: `url(${ImgBackground})`}} >
         <p>Todos os direitos reservados. ©</p>
       </Footer>
     )
@@ -345,7 +343,7 @@ class App extends React.Component {
 
           </Main>
 
-          <Footer>
+          <Footer style={{backgroundImage: `url(${ImgBackground})`}}>
             {this.footer()}
           </Footer>
           
