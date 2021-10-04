@@ -52,8 +52,10 @@ const Header = styled.header `
     justify-content: space-between;
     margin: 0;
     padding: 0 20px;
-   
-  
+    
+    h2:hover {
+      cursor: pointer;
+    }
     >button {
       height:30px;
       align-self: center;
@@ -159,8 +161,8 @@ class App extends React.Component {
 
   header = () => {
     return(
-      <header style={{backgroundImage: `url(${ImgBackground})`}}>
-        <h2 onClick={this.onClickNaves}>🚀Galáxia 42</h2>
+      <header  onClick={this.onClickViagens} style={{backgroundImage: `url(${ImgBackground})`}}>
+        <h2 onClick={this.onClickViagens}>🚀Galáxia 42</h2>
         <button value={'carrinho'} onClick={this.onClickAdicionarCarrinho}>Carrinho</button>
       </header>
     )
